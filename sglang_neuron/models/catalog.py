@@ -205,6 +205,11 @@ MODELS = {
     ),
     "Qwen3ForCausalLM": ModelSpec(package="sglang_neuron.models.qwen3", kv_cache_dtypes=("auto", "bf16", "bfloat16")),
     "Glm4ForCausalLM": ModelSpec(package="sglang_neuron.models.glm4", kv_cache_dtypes=("auto", "bf16", "bfloat16")),
+    # the text model of the multimodal checkpoint (models/muse_glimmer): its launch rules require
+    # --language-model-only, SGLang's own text-only switch for the architecture
+    "MuseGlimmerForConditionalGeneration": ModelSpec(package="sglang_neuron.models.muse_glimmer",
+                                                     kv_cache_dtypes=("auto", "bf16", "bfloat16"),
+                                                     launch_hooks="sglang_neuron.models.muse_glimmer.launch"),
     "Qwen3MoeForCausalLM": ModelSpec(package="sglang_neuron.models.qwen3_moe",
                                      kv_cache_dtypes=("auto", "bf16", "bfloat16")),
     # the paged giga prefill writes each forward's final GDN state into SGLang's tracking slot, so the chunk-keyed tree

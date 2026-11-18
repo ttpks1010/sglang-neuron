@@ -12,6 +12,8 @@ needs and what its launch refuses.
 - [Qwen3-MoE](qwen3-moe.md): Qwen3-30B-A3B, the dense transformer with a sparse MoE block, TP4 with EP4.
 - [GLM-4](glm-4.md): GLM-4-9B-0414 on the dense transformer, with QKV biases, a fused gate and up projection, two more
   norms and a partial RoPE.
+- [Muse Glimmer](muse-glimmer.md): the language model of Muse-Glimmer-30B, text only, TP4 on a trn2.3xlarge: three
+  sliding-window layers to one full-attention layer without RoPE, a gated attention output and centered norms.
 - [Qwen3.5-397B PD](qwen35-pd.md): the giga megakernel as disaggregated prefill and decode, with a kv_cp=16 (DCP)
   decode for 256K context.
 - [Qwen3.5 radix](qwen35-radix.md): the giga megakernel with the radix cache.
